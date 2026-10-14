@@ -11,7 +11,7 @@ namespace Environment {
         private void Awake()
         {
             InQue<int> que = new InQue<int> ();
-            que.Enqueue(next_element: 1);
+            que.Enque(next_element: 1);
             int value = que.Deque();
 
         }

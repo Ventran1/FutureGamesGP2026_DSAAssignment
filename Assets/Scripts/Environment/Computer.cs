@@ -9,24 +9,24 @@ namespace Environment {
     public class Student_c
     {
         public string name;
-        public int  employee_id;
-        public bool engine_room_clearence;
-        public DateTime first_engine_room_visit;
-        public DateTime last_engine_room_visit;
+        public int employeeId;
+        public bool hasEngineRoomClearance;
+        public string lastEntranceInEngineRoom;
+        public string lastExitFromEngineRoom;
     }
 
     [Serializable]
     public class StudenArray_c
     {
-        public Student_c[] students;
+        public Student_c[] employees;
     }
 
     public class Computer : MonoBehaviour, IInteractable {
 
         [SerializeField]
         private Task testTask = null; // Put your stack/queue here :)
-        private TextAsset jason_file;
-        private Student_c[] students;
+        [SerializeField]private TextAsset jason_file;
+        private Student_c[] employees;
 
         private void Awake() {
             InQue<int> que = new InQue<int>();
@@ -40,17 +40,17 @@ namespace Environment {
 
             if(jason_file == null) { return; }
 
-            Student_c[] strudents = JsonUtility.FromJson<StudenArray_c>(jason_file.text)?.students;
+            employees = JsonUtility.FromJson<StudenArray_c>(jason_file.text)?.employees;
 
-            if(students != null && students.Length <= 0) { return; }
+            if(employees == null || employees.Length <= 0) { return; }
 
-            foreach(Student_c student in students)
+            foreach(Student_c student in employees)
             {
                 Debug.Log("Name: " + student.name +".\n" +
-                    "Employee_ID:" + student.employee_id + ".\n" +
-                    "Has engine room clearence:" + student.engine_room_clearence + ".\n" +
-                    "First Time visit:" + student.first_engine_room_visit + ".\n" +
-                    "Lateset Time visit:" + student.last_engine_room_visit + ".\n");
+                    "Employee_ID:" + student.employeeId + ".\n" +
+                    "Has engine room clearence:" + student.hasEngineRoomClearance + ".\n" +
+                    "First Time visit:" + student.lastEntranceInEngineRoom + ".\n" +
+                    "Lateset Time visit:" + student.lastExitFromEngineRoom + ".\n");
             }
         }
     }

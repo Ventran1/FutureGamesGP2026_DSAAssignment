@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace Utilies
 { 
-
    public class InQue <T>
    {
        private List<T> que;

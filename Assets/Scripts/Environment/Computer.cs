@@ -1,7 +1,5 @@
-﻿using Assets.Scripts.Environment.Tasks;
-using NUnit.Framework;
+﻿using Environment.Tasks;
 using System;
-using TMPro;
 using UnityEngine;
 using Utilies;
 
@@ -24,31 +22,11 @@ namespace Environment {
     public class Computer : MonoBehaviour, IInteractable {
 
         [SerializeField]
-        private InQue<List> tasks = new InQue<List>(); // Put your stack/queue here :)
-        [SerializeField] private TextAsset jason_file;
-        private Student_c[] employees;
+        private InQue<Task> tasks = new InQue<Task>(); // Put your stack/queue here :)
 
-        private void Awake() {
-            InQue<List> que = new InQue<List>();
-            que.Enque(next_element: tasks.Peek());
-            List value = que.Deque();
-        }
-
-        public void OnInteract() {
-            if(jason_file == null) { return; }
-
-            employees = JsonUtility.FromJson<StudenArray_c>(jason_file.text)?.employees;
-
-            if(employees == null || employees.Length <= 0) { return; }
-
-            foreach(Student_c student in employees) {
-                Array.Sort(student.lastEntranceInEngineRoom.ToIntArray());
-                Debug.Log("Name: " + student.name + ".\n" +
-                    "Employee_ID:" + student.employeeId + ".\n" +
-                    "Has engine room clearence:" + student.hasEngineRoomClearance + ".\n" +
-                    "First Time visit:" + student.lastEntranceInEngineRoom + ".\n" +
-                    "Lateset Time visit:" + student.lastExitFromEngineRoom + ".\n");
-            }
+        public void OnInteract()
+        {
+            tasks.Deque().Execute();
         }
     }
 }

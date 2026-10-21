@@ -43,15 +43,7 @@ namespace Environment {
 
             if(employees == null || employees.Length <= 0) { return; }
 
-            foreach(Student_c student in employees)
-            {
-                Array.Sort(student.lastEntranceInEngineRoom.ToIntArray());
-                Debug.Log("Name: " + student.name +".\n" +
-                    "Employee_ID:" + student.employeeId + ".\n" +
-                    "Has engine room clearence:" + student.hasEngineRoomClearance + ".\n" +
-                    "First Time visit:" + student.lastEntranceInEngineRoom + ".\n" +
-                    "Lateset Time visit:" + student.lastExitFromEngineRoom + ".\n");
-            }
+
         }
     }
 }

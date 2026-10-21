@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Utilies;
 
@@ -33,7 +33,6 @@ namespace Environment {
             InQue<List> que = new InQue<List>();
             que.Enque(next_element: tasks.Peek());
             List value = que.Deque();
-
         }
 
         public void OnInteract() {
@@ -46,6 +45,7 @@ namespace Environment {
 
             foreach(Student_c student in employees)
             {
+                Array.Sort(student.lastEntranceInEngineRoom.ToIntArray());
                 Debug.Log("Name: " + student.name +".\n" +
                     "Employee_ID:" + student.employeeId + ".\n" +
                     "Has engine room clearence:" + student.hasEngineRoomClearance + ".\n" +

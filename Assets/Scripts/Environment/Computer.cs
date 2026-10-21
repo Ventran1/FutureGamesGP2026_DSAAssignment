@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Assets.Scripts.Environment.Tasks;
+using NUnit.Framework;
 using System;
 using TMPro;
 using UnityEngine;
@@ -7,8 +8,7 @@ using Utilies;
 namespace Environment {
 
     [Serializable]
-    public class Student_c
-    {
+    public class Student_c {
         public string name;
         public int employeeId;
         public bool hasEngineRoomClearance;
@@ -17,8 +17,7 @@ namespace Environment {
     }
 
     [Serializable]
-    public class StudenArray_c
-    {
+    public class StudenArray_c {
         public Student_c[] employees;
     }
 
@@ -26,7 +25,7 @@ namespace Environment {
 
         [SerializeField]
         private InQue<List> tasks = new InQue<List>(); // Put your stack/queue here :)
-        [SerializeField]private TextAsset jason_file;
+        [SerializeField] private TextAsset jason_file;
         private Student_c[] employees;
 
         private void Awake() {
@@ -36,17 +35,15 @@ namespace Environment {
         }
 
         public void OnInteract() {
-
             if(jason_file == null) { return; }
 
             employees = JsonUtility.FromJson<StudenArray_c>(jason_file.text)?.employees;
 
             if(employees == null || employees.Length <= 0) { return; }
 
-            foreach(Student_c student in employees)
-            {
+            foreach(Student_c student in employees) {
                 Array.Sort(student.lastEntranceInEngineRoom.ToIntArray());
-                Debug.Log("Name: " + student.name +".\n" +
+                Debug.Log("Name: " + student.name + ".\n" +
                     "Employee_ID:" + student.employeeId + ".\n" +
                     "Has engine room clearence:" + student.hasEngineRoomClearance + ".\n" +
                     "First Time visit:" + student.lastEntranceInEngineRoom + ".\n" +

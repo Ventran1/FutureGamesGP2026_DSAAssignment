@@ -1,5 +1,6 @@
-﻿using Environment.Tasks;
+﻿using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Utilies;
 
@@ -24,19 +25,18 @@ namespace Environment {
     public class Computer : MonoBehaviour, IInteractable {
 
         [SerializeField]
-        private Task testTask = null; // Put your stack/queue here :)
+        private InQue<List> tasks = new InQue<List>(); // Put your stack/queue here :)
         [SerializeField]private TextAsset jason_file;
         private Student_c[] employees;
 
         private void Awake() {
-            InQue<int> que = new InQue<int>();
-            que.Enque(next_element: 1);
-            int value = que.Deque();
+            InQue<List> que = new InQue<List>();
+            que.Enque(next_element: tasks.Peek());
+            List value = que.Deque();
 
         }
 
         public void OnInteract() {
-            testTask.Execute();
 
             if(jason_file == null) { return; }
 

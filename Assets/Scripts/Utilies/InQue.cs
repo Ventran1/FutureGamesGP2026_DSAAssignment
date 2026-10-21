@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using UnityEngine;
 
 namespace Utilies
 {
     [Serializable]
    public class InQue <T>
    {
-       private List<T> que;
+       [SerializeField] private List<T> que;
 
        public InQue()
        {

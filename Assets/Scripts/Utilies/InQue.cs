@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Utilies
-{ 
+{
+    [Serializable]
    public class InQue <T>
    {
        private List<T> que;

@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 424e29aeeeb4ee04494d3d4a5d2c9ace, type: 3}
   m_Name: Search_Task
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Environment.Tasks.Search_Task
+  json_file: {fileID: 4900000, guid: b24b39698af735f429e4b8a173b60d86, type: 3}
